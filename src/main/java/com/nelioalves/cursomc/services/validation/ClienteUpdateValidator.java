@@ -39,7 +39,6 @@ public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate
 		Integer uriId = Integer.parseInt(map.get("id"));
 		
 		if(aux.isPresent() && !aux.get().getId().equals(uriId)) {
-		//if(aux.isPresent() && !aux.get().getId().equals(objDto.getId())) {
 			list.add(new FieldMessage("email", "Email já existente"));
 		}
 		
