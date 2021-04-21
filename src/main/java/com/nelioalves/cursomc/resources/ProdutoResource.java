@@ -1,7 +1,5 @@
 package com.nelioalves.cursomc.resources;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +38,7 @@ public class ProdutoResource {
 			@RequestParam(value="direction", defaultValue="ASC") String direction
 	) {
 		
-		Page<Produto> list = service.search(nome, URL.decodeIntList(categorias), page, linesPerPage, orderBy, direction);
+		Page<Produto> list = service.search(URL.decodeParam(nome), URL.decodeIntList(categorias), page, linesPerPage, orderBy, direction);
 		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));
 		
 		return ResponseEntity.ok(listDto);
